@@ -2,8 +2,8 @@ title:              UJaJuck's Repository
 email:              ujajuck@kakao.com
 description:        Tech Blog
 author:             UJaJuck
-baseurl:            "/startbootstrap-clean-blog-jekyll"
-url:                "https://ujajcuk.github.io"
+baseurl:            ""
+url:                "https://ujajcuk.github.io/"
 
 # Social Profiles
 twitter_username:   SBootstrap
