@@ -1,0 +1,20 @@
+I"/<h1 id="jekyll로-포스팅하기">Jekyll로 포스팅하기</h1>
+
+<p>jekyll 은 정적 html 페이지를 보여주는 형식의 블로그이다.</p>
+
+<p>사용한 테마는 Clean Blog 이다.</p>
+
+<p>윈도우 환경에서 사용하기 위해서는 ruby 서버 설치 후 Ruby command 에서 <strong>bundle exec jekyll serve</strong> 로 실행한다.</p>
+
+<p>##Todo</p>
+<ul>
+  <li>태그 기능, 댓글 기능 추가</li>
+  <li>post 내에 write 창을 만들어서 자동으로 서버에 올릴 수 있는지 확인</li>
+</ul>
+
+<h2 id="참고">참고</h2>
+<ul>
+  <li><a href="https://jekyllrb-ko.github.io/docs/windows/">지킬 공식 홈페이지</a></li>
+  <li><a href="https://wormwlrm.github.io/2018/07/13/How-to-set-Github-and-Jekyll-environment-on-Windows.html">재그지그 기술블로그</a></li>
+</ul>
+:ET
