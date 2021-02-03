@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Jekyll로 포스팅하기"
+title: "최단거리 알고리즘"
 subtitle: "make github blog with jekyll"
 date: 2021-02-01 00:09:00 -0400
 background: '/img/posts/01.png'
