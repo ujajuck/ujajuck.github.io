@@ -34,9 +34,7 @@ background: '/img/posts/coding.jpg'
 
 	
 ```java
-<details>
-<summary>Code</summary>
-	<div>
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -115,10 +113,6 @@ public class Circuit {
 	}
 
 }
-
-
-</div>
-</details>
 
 ```
 
