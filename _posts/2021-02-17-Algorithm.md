@@ -31,6 +31,87 @@ background: '/img/posts/coding.jpg'
 
 위상정렬 : [고대어 사전 (하)](https://www.algospot.com/judge/problem/read/DICTIONARY)
 
+''' java
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Circuit {
+	static String ans;
+	static int flag;
+	static Stack<Integer> st;
+	static LinkedList<Integer>[] map=new LinkedList[26];
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int tc=sc.nextInt();
+		for(int t=1;t<=tc;t++) {
+			int n=sc.nextInt();
+			String[] words=new String[n];
+			for(int i=0;i<n;i++) {
+				words[i]=sc.next();
+			}
+			for(int i=0;i<26;i++) {
+				map[i]=new LinkedList<Integer>();
+			}
+			for(int i=1;i<n;i++) {
+				int j=i-1;
+				for(int k=0;k<Math.min(words[i].length(), words[j].length());k++) {
+					if(words[i].charAt(k)!=words[j].charAt(k)) {
+						//System.out.println(words[j].charAt(k)+" "+words[i].charAt(k));
+						map[words[j].charAt(k)-'a'].add(words[i].charAt(k)-'a');
+						break;
+					}
+				}
+			}// j번째 글자가 i번째 글자 앞에 있는 이유를 찾는다.
+			ans="";
+			flag=0;
+			dfs();
+		}
+
+	}
+
+	private static void dfs() {
+		//System.out.println(ans);
+		int[] vis=new int[26];
+		Queue<Integer> q=new LinkedList<Integer>();
+		for(int i=0;i<26;i++) {
+			for(int j=0;j<map[i].size();j++) {
+			vis[map[i].get(j)]++;
+			}
+		}
+		for(int i=0;i<26;i++) {
+			if(vis[i]==0) {
+				q.add(i);
+				System.out.println(i);
+			}
+		}
+		System.out.println();
+		for(int i=0;i<26;i++) {
+			if(q.isEmpty()) {
+				break;
+			}
+			int now=q.poll();
+			ans+=(char)(now+'a');
+			for(int j:map[now]) {
+				vis[j]--;
+				if(vis[j]==0) {
+					q.add(j);
+				}
+			}
+		}
+		for(int i=0;i<26;i++) {
+			if(ans.indexOf((char)('a'+i))<0){
+				System.out.println("INVALID HYPOTHESIS");
+				return;
+			}
+		}
+		System.out.println(ans);
+	}
+
+}
+'''
+
 오일러 서킷 : 그래프의 모든 간선을 정확히 한 번씩 지나서 시작점으로 돌아오는 경로를 찾는 문제
 
 오일러 트레일 : 오일러 서킷처럼 그래프의 모든 간선을 정확히 한 번씩 지나지만, 시작점과 끝점이 다른 경로 
