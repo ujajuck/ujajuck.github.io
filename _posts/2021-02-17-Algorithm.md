@@ -31,10 +31,9 @@ background: '/img/posts/coding.jpg'
 
 위상정렬 : [고대어 사전 (하)](https://www.algospot.com/judge/problem/read/DICTIONARY)
 
-<div>
 <details>
 <summary>Code</summary>
-
+<div>
 ```java
 
 import java.util.LinkedList;
@@ -116,8 +115,8 @@ public class Circuit {
 
 }
 ```
-</details>
 </div>
+</details>
 
 오일러 서킷 : 그래프의 모든 간선을 정확히 한 번씩 지나서 시작점으로 돌아오는 경로를 찾는 문제
 
@@ -127,7 +126,8 @@ public class Circuit {
   * 방향 그래프는 in == out
 
 [단어 제한 끝말잇기(하)](https://www.algospot.com/judge/problem/read/WORDCHAIN)
-
+[감시카메라 찾기]
+[회의실 배정]
 
 ### 참고 링크
 
