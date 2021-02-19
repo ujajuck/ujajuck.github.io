@@ -31,7 +31,7 @@ background: '/img/posts/coding.jpg'
 
 위상정렬 : [고대어 사전 (하)](https://www.algospot.com/judge/problem/read/DICTIONARY)
 
-''' java
+'''java
 
 import java.util.LinkedList;
 import java.util.Queue;
