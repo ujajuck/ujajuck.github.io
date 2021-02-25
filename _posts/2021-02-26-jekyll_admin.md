@@ -24,3 +24,8 @@ bundle install
  http://localhost:4000/admin 으로 접속시 관리자페이지 접속가능
 
 ![image](/img/posts/cool.jpg)
+
+## 참고
+* https://honbabzone.com/jekyll/start-gitHubBlog/
+* https://blog.webjeda.com/jekyll-admin/
+* http://labs.brandi.co.kr/2018/05/14/chunbs.html
