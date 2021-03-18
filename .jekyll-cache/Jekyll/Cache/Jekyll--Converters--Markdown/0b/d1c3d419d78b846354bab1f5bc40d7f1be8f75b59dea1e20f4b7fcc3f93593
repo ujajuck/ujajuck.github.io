@@ -1,0 +1,58 @@
+I"#<h1 id="python-기초">Python 기초</h1>
+<p>Data type
+———————
+내가 햇갈려서 정리하는 python 기초문법
+type() 으로 데이터 타입 확인가능</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Structure</th>
+      <th>Oedered</th>
+      <th>변형가능</th>
+      <th>구성</th>
+      <th>Example</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>List</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>[] or list()</td>
+      <td>[3.2, 1, ‘yes’]</td>
+      <td>—–</td>
+    </tr>
+    <tr>
+      <td>Tuple</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>() or tuple()</td>
+      <td>(3.2, 1, ‘yes’)</td>
+      <td>괄호없이 선언시 default</td>
+    </tr>
+    <tr>
+      <td>Set</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>{} or set()</td>
+      <td>{3.2, 1, ‘yes’}</td>
+      <td>빈 set을 만들려면 set ()을 사용</td>
+    </tr>
+    <tr>
+      <td>Dictionary</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>{} or dict()</td>
+      <td>{“a”:3.2, “b”:1, “c”:’yes’}</td>
+      <td>키는 변경 불가능,dict_name[key]로 value 확인</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>중괄호를 사용하여 {1, 2, 3}와 같은 집합을 정의 할 수 있습니다.<br />
+그러나 다음과 같이 중괄호를 비워두면 {} Python이 대신 빈 사전을 만듭니다. 따라서 <strong>빈 set을 만들려면 set ()을 사용하십시오.</strong>
+<br /><br />
+사전 자체는 변경 가능하지만 각 개별 키는 변경 불가능해야합니다.</p>
+:ET

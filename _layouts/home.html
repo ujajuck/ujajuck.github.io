@@ -8,59 +8,64 @@ layout: default
   {% else %}
   <header class="masthead">
     {% endif %}
+    <!--
     <div class="overlay"></div>
+    -->
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>{{ site.title }}</h1>
-            {% if site.description %}
-            <span class="subheading">{{ site.description }}</span>
-            {% endif %}
+      <div class="page-heading">
+        <div class="cover">
+          <div class="clock"></div>
+          <div class='hours'></div>
+          <div class='seconds'></div>
+          <div class='minutes'></div>
+          <div class="site-name">
+            <!--
+            <div class="site-name__inner">
+              <div class="btn">Blog</div>
+            </div>
+            -->
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
 
-        {{ content }}
+  <script>
+    setInterval(function() {
+      var seconds = new Date().getSeconds();
+      var sdegree = seconds * 6 + 270;
+      seconds = ("0" + seconds).slice(-2);
+      var secondSel = document.querySelector(".seconds");
 
-        <!-- Home Post List -->
-        {% for post in site.posts limit : 5 %}
+      secondSel.style.transform = "rotate(" + sdegree + "deg) translate(160px) rotate(-" + sdegree + "deg)";
+      secondSel.innerHTML = seconds;
 
-        <article class="post-preview">
-          <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-            <h2 class="post-title">{{ post.title }}</h2>
-            {% if post.subtitle %}
-            <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-            {% else %}
-            <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
-            {% endif %}
-          </a>
-          <p class="post-meta">Posted by
-            {% if post.author %}
-            {{ post.author }}
-            {% else %}
-            {{ site.author }}
-            {% endif %}
-            on
-            {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
-          </p>
-        </article>
+      var minutes = new Date().getMinutes();
+      var mdegree = minutes * 6 + 270;
+      var minutesSel = document.querySelector(".minutes");
+      minutes = ("0" + minutes).slice(-2);
 
-        <hr>
+      minutesSel.style.transform = "rotate(" + mdegree + "deg) translate(181px) rotate(-" + mdegree + "deg)";
+      minutesSel.innerHTML =  minutes;
 
-        {% endfor %}
+      var hours = new Date().getHours();
+      var hoursSel = document.querySelector(".hours");
 
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
-        </div>
+      if (hours > 12) {
+        hours = hours - 12;
+      }
 
-      </div>
-    </div>
-  </div>
+      hours = ("0" + hours).slice(-2);
+
+      hoursSel.innerHTML = hours;
+    }, 1000);
+
+    var btnSel = document.querySelector('.btn');
+    var header = document.getElementsByTagName('header')[0];
+
+    btnSel.addEventListener("click", function() {
+      header.scrollIntoView();
+    }, false);
+
+  </script>

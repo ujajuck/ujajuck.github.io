@@ -1,0 +1,194 @@
+I"A<h1 id="그래프-알고리즘">그래프 알고리즘</h1>
+
+<h2 id="그래프-표현-방식">그래프 표현 방식</h2>
+
+<hr />
+
+<ul>
+  <li>
+    <p>인접 행렬 표현</p>
+
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>O(</td>
+              <td>v</td>
+              <td>^2) 공간 사용</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>인접 리스트 표현</p>
+
+    <ul>
+      <li>
+        <p>희소 그래프 (간선의 수가 V^2 보다 훨씬 적은 그래프) 에서 유리</p>
+      </li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>O(</td>
+              <td>V</td>
+              <td>X</td>
+              <td>E</td>
+              <td>) 공간 사용</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="그래프-깊이-우선-탐색">그래프 깊이 우선 탐색</h2>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>시간 복잡도 : O(</td>
+      <td>V</td>
+      <td>X</td>
+      <td>E</td>
+      <td>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위상정렬 : <a href="https://www.algospot.com/judge/problem/read/DICTIONARY">고대어 사전 (하)</a></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Stack</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circuit</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="nc">String</span> <span class="n">ans</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">int</span> <span class="n">flag</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">st</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;[]</span> <span class="n">map</span><span class="o">=</span><span class="k">new</span> <span class="nc">LinkedList</span><span class="o">[</span><span class="mi">26</span><span class="o">];</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span><span class="o">=</span><span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">tc</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">t</span><span class="o">&lt;=</span><span class="n">tc</span><span class="o">;</span><span class="n">t</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+			<span class="nc">String</span><span class="o">[]</span> <span class="n">words</span><span class="o">=</span><span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">sc</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+			<span class="o">}</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">map</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+			<span class="o">}</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+				<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">k</span><span class="o">&lt;</span><span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">(),</span> <span class="n">words</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">length</span><span class="o">());</span><span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)!=</span><span class="n">words</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="o">{</span>
+						<span class="c1">//System.out.println(words[j].charAt(k)+" "+words[i].charAt(k));</span>
+						<span class="n">map</span><span class="o">[</span><span class="n">words</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)-</span><span class="sc">'a'</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)-</span><span class="sc">'a'</span><span class="o">);</span>
+						<span class="k">break</span><span class="o">;</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+			<span class="o">}</span><span class="c1">// j번째 글자가 i번째 글자 앞에 있는 이유를 찾는다.</span>
+			<span class="n">ans</span><span class="o">=</span><span class="s">""</span><span class="o">;</span>
+			<span class="n">flag</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+			<span class="n">dfs</span><span class="o">();</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">()</span> <span class="o">{</span>
+		<span class="c1">//System.out.println(ans);</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">vis</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">26</span><span class="o">];</span>
+		<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">=</span><span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">map</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">size</span><span class="o">();</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">vis</span><span class="o">[</span><span class="n">map</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="n">j</span><span class="o">)]++;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">vis</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="kt">int</span> <span class="n">now</span><span class="o">=</span><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+			<span class="n">ans</span><span class="o">+=(</span><span class="kt">char</span><span class="o">)(</span><span class="n">now</span><span class="o">+</span><span class="sc">'a'</span><span class="o">);</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">j:</span><span class="n">map</span><span class="o">[</span><span class="n">now</span><span class="o">])</span> <span class="o">{</span>
+				<span class="n">vis</span><span class="o">[</span><span class="n">j</span><span class="o">]--;</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">vis</span><span class="o">[</span><span class="n">j</span><span class="o">]==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">j</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">ans</span><span class="o">.</span><span class="na">indexOf</span><span class="o">((</span><span class="kt">char</span><span class="o">)(</span><span class="sc">'a'</span><span class="o">+</span><span class="n">i</span><span class="o">))&lt;</span><span class="mi">0</span><span class="o">){</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"INVALID HYPOTHESIS"</span><span class="o">);</span>
+				<span class="k">return</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>오일러 서킷 : 그래프의 모든 간선을 정확히 한 번씩 지나서 시작점으로 돌아오는 경로를 찾는 문제</p>
+
+<p>오일러 트레일 : 오일러 서킷처럼 그래프의 모든 간선을 정확히 한 번씩 지나지만, 시작점과 끝점이 다른 경로</p>
+
+<ul>
+  <li>무방향 그래프의 경우 모든 정점이 짝수개</li>
+  <li>방향 그래프는 in == out</li>
+</ul>
+
+<p><a href="https://www.algospot.com/judge/problem/read/WORDCHAIN">단어 제한 끝말잇기(하)</a>
+[감시카메라 찾기]
+[회의실 배정]</p>
+
+<h3 id="참고-링크">참고 링크</h3>
+
+<hr />
+
+<blockquote>
+  <p><a href="https://namu.wiki/w/%ED%95%9C%EB%B6%93%EA%B7%B8%EB%A6%AC%EA%B8%B0">https://namu.wiki/w/%ED%95%9C%EB%B6%93%EA%B7%B8%EB%A6%AC%EA%B8%B0</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://sonsh0824.tistory.com/entry/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B3%B5%EB%B6%804-%ED%95%9C%EB%B6%93%EA%B7%B8%EB%A6%AC%EA%B8%B0Eulerian-circuit">https://sonsh0824.tistory.com/entry/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B3%B5%EB%B6%804-%ED%95%9C%EB%B6%93%EA%B7%B8%EB%A6%AC%EA%B8%B0Eulerian-circuit</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://velog.io/@doontagi/%EA%B7%B8%EB%9E%98%ED%94%84-%EC%98%A4%EC%9D%BC%EB%9F%AC-%EC%84%9C%ED%82%B7%EA%B3%BC-%ED%8A%B8%EB%A0%88%EC%9D%BC">https://velog.io/@doontagi/%EA%B7%B8%EB%9E%98%ED%94%84-%EC%98%A4%EC%9D%BC%EB%9F%AC-%EC%84%9C%ED%82%B7%EA%B3%BC-%ED%8A%B8%EB%A0%88%EC%9D%BC</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://projooni.tistory.com/entry/%EC%98%A4%EC%9D%BC%EB%9F%AC-%EC%84%9C%ED%82%B7">https://projooni.tistory.com/entry/%EC%98%A4%EC%9D%BC%EB%9F%AC-%EC%84%9C%ED%82%B7</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://coloredrabbit.tistory.com/36">https://coloredrabbit.tistory.com/36</a></p>
+</blockquote>
+
+<blockquote>
+  <p><a href="https://100100e.tistory.com/118">https://100100e.tistory.com/118</a></p>
+</blockquote>
+
+<h2 id="그래프-너비-우선-탐색">그래프 너비 우선 탐색</h2>
+
+<hr />
+
+:ET

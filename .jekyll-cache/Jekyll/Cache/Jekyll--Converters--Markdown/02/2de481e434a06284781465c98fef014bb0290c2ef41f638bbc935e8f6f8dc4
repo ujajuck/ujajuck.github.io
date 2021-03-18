@@ -1,0 +1,16 @@
+I"�<h1 id="jekyll-관리자-페이지-추가">Jekyll 관리자 페이지 추가</h1>
+
+<p>프로젝트 root에  Gemfile 파일에 아래 스크립트 추가</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem 'jekyll-admin', group: :jekyll_plugins
+</code></pre></div></div>
+
+<p>프로젝트 root에서 요청</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+</code></pre></div></div>
+
+<p>http://localhost:4000/admin 으로 접속시 관리자페이지 접속가능</p>
+
+<p><img src="/img/posts/cool.jpg" alt="image" /></p>
+:ET
