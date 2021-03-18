@@ -1,0 +1,32 @@
+I""<h1 id="jekyll-관리자-페이지-추가">Jekyll 관리자 페이지 추가</h1>
+
+<p>프로젝트 root에  Gemfile 파일에 아래 스크립트 추가</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem 'jekyll-admin', group: :jekyll_plugins
+</code></pre></div></div>
+
+<p>프로젝트 root에서 요청</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+</code></pre></div></div>
+
+<p>http://localhost:4000/admin 으로 접속시 관리자페이지 접속가능</p>
+
+<p><img src="/img/posts/cool.jpg" alt="image" /></p>
+
+<h2 id="proseio">Prose.io</h2>
+
+<p><a href="http://prose.io">Prose.io</a></p>
+
+<p>admin 페이지를 사용하는것 보다 빠르게 포스트 수정이 된다.<br />
+모든 깃 프로젝트를 간단히 수정할때 add commit push 과정을 웹으로 간단히 사용할 수 있다.<br />
+하단 참고 링크에 설명 참조<br /></p>
+
+<h2 id="참고">참고</h2>
+<ul>
+  <li>https://honbabzone.com/jekyll/start-gitHubBlog/</li>
+  <li>https://blog.webjeda.com/jekyll-admin/</li>
+  <li>http://labs.brandi.co.kr/2018/05/14/chunbs.html</li>
+  <li><a href="https://theorydb.github.io/envops/2019/05/04/envops-blog-posting-prose-io/">Prose.id 란?</a></li>
+</ul>
+:ET
