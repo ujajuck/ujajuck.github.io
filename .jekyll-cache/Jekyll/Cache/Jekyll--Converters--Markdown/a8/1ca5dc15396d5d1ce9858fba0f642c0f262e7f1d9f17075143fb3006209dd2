@@ -1,0 +1,48 @@
+I"�<h1 id="시계">시계</h1>
+
+<p>다른 테마의 홈에서 긁었다 ㅎㅎ;;</p>
+
+<ul>
+  <li><a href="https://github.com/knaman2609/clean">Clean Theme</a></li>
+</ul>
+
+<hr />
+
+<h1 id="배경">배경</h1>
+
+<p>랜덤 배경을 사용하기</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://source.unsplash.com/category/nature/1600x900
+
+</code></pre></div></div>
+
+<p>아래 링크를 index.html 파일 background에 위 주소 넣기</p>
+
+<p>30초마다 갱신되며, 새로고침시 새로운 배경사진이 적용된다.</p>
+
+<ul>
+  <li><a href="https://opentutorials.org/course/2473/13868">랜덤배경 사용하기</a></li>
+</ul>
+
+<p>_masthead.scss 에서 높이도 150px 로 조정했다.</p>
+
+<hr />
+
+<h1 id="캘린더">캘린더</h1>
+
+<p>.\assets\vendor\startbootstrap-clean-blog\scss\clean-blog.scss</p>
+
+<p>css 추가 경로</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "calendar.scss";
+
+</code></pre></div></div>
+
+<p><a href="https://newtodesign.com/css-calendar/">calendar 예시</a></p>
+
+<p><a href="https://codepen.io/alexoliverwd/pen/bHhBI">css참고</a></p>
+
+<p><a href="https://velog.io/@raram2/CSS-%EB%A7%88%EC%A7%84-%EC%83%81%EC%87%84Margin-collapsing-%EC%9B%90%EB%A6%AC-%EC%99%84%EB%B2%BD-%EC%9D%B4%ED%95%B4">css 마진 겹침 현상이란?</a></p>
+
+<p><a href="https://im-developer.tistory.com/115">calendar 예시2</a></p>
+:ET

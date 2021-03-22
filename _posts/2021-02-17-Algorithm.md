@@ -3,9 +3,9 @@ layout: post
 title: "그래프 알고리즘"
 subtitle: "그래프 알고리즘 정리"
 date: 2021-02-17 00:09:00 -0400
-background: '/img/posts/coding.jpg'
+background: 'https://source.unsplash.com/category/nature/1600x900'
 ---
-그래프 알고리즘 
+그래프 알고리즘
 ==================
 
 ## 그래프 표현 방식
@@ -13,13 +13,13 @@ background: '/img/posts/coding.jpg'
 -----------------
 
 * 인접 행렬 표현
-  
+
   * O(|v|^2) 공간 사용
 
-* 인접 리스트 표현 
+* 인접 리스트 표현
 
   * 희소 그래프 (간선의 수가 V^2 보다 훨씬 적은 그래프) 에서 유리
-  
+
   * O(|V|X|E|) 공간 사용
 
 
@@ -32,7 +32,7 @@ background: '/img/posts/coding.jpg'
 위상정렬 : [고대어 사전 (하)](https://www.algospot.com/judge/problem/read/DICTIONARY)
 
 
-	
+
 ```java
 
 import java.util.LinkedList;
@@ -119,7 +119,7 @@ public class Circuit {
 
 오일러 서킷 : 그래프의 모든 간선을 정확히 한 번씩 지나서 시작점으로 돌아오는 경로를 찾는 문제
 
-오일러 트레일 : 오일러 서킷처럼 그래프의 모든 간선을 정확히 한 번씩 지나지만, 시작점과 끝점이 다른 경로 
+오일러 트레일 : 오일러 서킷처럼 그래프의 모든 간선을 정확히 한 번씩 지나지만, 시작점과 끝점이 다른 경로
 
   * 무방향 그래프의 경우 모든 정점이 짝수개
   * 방향 그래프는 in == out
@@ -149,5 +149,3 @@ public class Circuit {
 ## 그래프 너비 우선 탐색
 
 ----------------------
-
-

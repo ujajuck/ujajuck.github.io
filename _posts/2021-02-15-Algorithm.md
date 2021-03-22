@@ -3,7 +3,7 @@ layout: post
 title: "프로그래밍 언어의 기초"
 subtitle: "언어형식과 속도"
 date: 2021-02-15 00:09:00 -0400
-background: '/img/posts/coding.jpg'
+background: 'https://source.unsplash.com/category/nature/1600x900'
 ---
 프로그래밍 언어의 기초
 ========================
@@ -15,7 +15,7 @@ background: '/img/posts/coding.jpg'
 기계어로의 번역없이 한줄 한줄 해석 후 실행한다. 보안적 관점에서 우수하다.
 ex) python, R
 
-* 컴파일 언어 
+* 컴파일 언어
 전체 프로그램을 기계어로 변환 후 실행.  소스 전체를 컴파일 해야하기 때문에 빌드 시간이 오래걸리나 실행시간 면에서 압도적이다.
 ex) C,C++
 
@@ -24,7 +24,7 @@ JVM에 올릴 .class 파일 생성을 위해 .java 파일을 컴파일 한다. j
 ![image](https://mblogthumb-phinf.pstatic.net/MjAxODAzMTNfMjU1/MDAxNTIwOTM2MDg5NzU5.FC9iwVzwVFoJ7L3d7R1MF1YBW8BMwQV9DLS3wCNvSJsg.OEmYIspBpTdYGKlQYIPsfThUhCdxdcS_rJnTuU-CTfkg.PNG.ehcibear314/%EC%9E%90%EB%B0%94%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%EC%99%80%EC%9E%90%EB%B0%94%EC%9D%B8%ED%84%B0%ED%94%84%EB%A6%AC%ED%84%B0.png?type=w800) <br>
 즉, 자바는 JVM 만 설치되어 있다면 플랫폼에 종속적이지 않다는 장점을 가진다. 이러한 자바의 플랫폼 독립성은 기기마다 다른 기계어의 영향을 받지 않으므로 프로그램의 이식성을 높인다.
 
-* 파이썬은 왜 느린가? 
+* 파이썬은 왜 느린가?
 파이썬은 변수의 형태가 정해져 있지않은 동적타입의 언어이고 인터프리터 언어이다. <br>
 +)파이썬은 암묵적인 자료형의 변환을 허용하지 않는 강타입 동적타입 언어다. 약타입 동적차입 언어에는 대표적으로 javascript 가 있다.
 

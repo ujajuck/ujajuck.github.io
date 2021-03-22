@@ -3,7 +3,7 @@ layout: post
 title: Jekyll 관리자 페이지 추가
 subtitle: Jekyll 관리자 페이지 추가
 date: '2021-02-26 00:09:00 -0400'
-background: /img/posts/cool.jpg
+background: 'https://source.unsplash.com/category/nature/1600x900'
 published: true
 ---
 Jekyll 관리자 페이지 추가
