@@ -223,33 +223,19 @@ public class Main11054 {
 ```
 
 
-* [부분수열의 증가수열 D6 X]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXgZWImaAwYDFASW&categoryId=AXgZWImaAwYDFASW&categoryType=CODE&problemTitle=%EB%B6%80%EB%B6%84%EC%88%98%EC%97%B4%EC%9D%98&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [두트리 D6 X]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXfRipHqKacDFAS5&categoryId=AXfRipHqKacDFAS5&categoryType=CODE&problemTitle=%EB%91%90+%ED%8A%B8%EB%A6%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [보물 D6]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXeJNmQqSCsDFAS5&categoryId=AXeJNmQqSCsDFAS5&categoryType=CODE&problemTitle=%EB%B3%B4%EB%AC%BC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [최솟값의 인덱스 D6 ]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXdHx9X6C5IDFAS5&categoryId=AXdHx9X6C5IDFAS5&categoryType=CODE&problemTitle=%EC%B5%9C%EC%86%9F%EA%B0%92&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [연속하는 수의 곱셈 D6]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXb6NiNKvHsDFARR&categoryId=AXb6NiNKvHsDFARR&categoryType=CODE&problemTitle=%EC%97%B0%EC%86%8D%ED%95%98%EB%8A%94&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [가위바위보와 무승부 D6]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXaSbPaKPckDFASQ&categoryId=AXaSbPaKPckDFASQ&categoryType=CODE&problemTitle=%EA%B0%80%EC%9C%84&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [보석도둑 D6] 
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXZudmIa0AoDFAST&categoryId=AXZudmIa0AoDFAST&categoryType=CODE&problemTitle=%EB%B3%B4%EC%84%9D&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [쿼리의최대값 D6] 
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXYmnKa6dYoDFAST&categoryId=AXYmnKa6dYoDFAST&categoryType=CODE&problemTitle=%EC%BF%BC%EB%A6%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [클러스터링 D6 ]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXXjDfE662IDFAST&categoryId=AXXjDfE662IDFAST&categoryType=CODE&problemTitle=%ED%81%B4%EB%9F%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [01채우기 D5 ]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXWXPp76-b8DFAST&categoryId=AXWXPp76-b8DFAST&categoryType=CODE&problemTitle=%EC%B1%84%EC%9A%B0%EA%B8%B0&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [트리 부수기 D6] 
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXVJpLGqK7wDFASe&categoryId=AXVJpLGqK7wDFASe&categoryType=CODE&problemTitle=%ED%8A%B8%EB%A6%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [수만들기 D6 ]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXTC4piqD_IDFASe&categoryId=AXTC4piqD_IDFASe&categoryType=CODE&problemTitle=%EC%88%98+%EB%A7%8C%EB%93%A4%EA%B8%B0&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [조 신나  D5 ]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXSVnJc6EHIDFAQT&categoryId=AXSVnJc6EHIDFAQT&categoryType=CODE&problemTitle=%EC%8B%A0%EB%82%98&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [수나열누기  D6] 
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXRSfaWq-igDFAXS&categoryId=AXRSfaWq-igDFAXS&categoryType=CODE&problemTitle=%EC%88%98%EB%82%98%EC%97%B4%EB%88%84%EA%B8%B0&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
-* [셋이놀기 D5 ]
-(https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXO8U7N6RBEDFAXS&categoryId=AXO8U7N6RBEDFAXS&categoryType=CODE&problemTitle=%EC%85%8B&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [부분수열의 증가수열 D6 X](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXgZWImaAwYDFASW&categoryId=AXgZWImaAwYDFASW&categoryType=CODE&problemTitle=%EB%B6%80%EB%B6%84%EC%88%98%EC%97%B4%EC%9D%98&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [두트리 D6 X](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXfRipHqKacDFAS5&categoryId=AXfRipHqKacDFAS5&categoryType=CODE&problemTitle=%EB%91%90+%ED%8A%B8%EB%A6%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [보물 D6](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXeJNmQqSCsDFAS5&categoryId=AXeJNmQqSCsDFAS5&categoryType=CODE&problemTitle=%EB%B3%B4%EB%AC%BC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [최솟값의 인덱스 D6 ](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXdHx9X6C5IDFAS5&categoryId=AXdHx9X6C5IDFAS5&categoryType=CODE&problemTitle=%EC%B5%9C%EC%86%9F%EA%B0%92&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [연속하는 수의 곱셈 D6](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXb6NiNKvHsDFARR&categoryId=AXb6NiNKvHsDFARR&categoryType=CODE&problemTitle=%EC%97%B0%EC%86%8D%ED%95%98%EB%8A%94&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [가위바위보와 무승부 D6](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXaSbPaKPckDFASQ&categoryId=AXaSbPaKPckDFASQ&categoryType=CODE&problemTitle=%EA%B0%80%EC%9C%84&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [보석도둑 D6](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXZudmIa0AoDFAST&categoryId=AXZudmIa0AoDFAST&categoryType=CODE&problemTitle=%EB%B3%B4%EC%84%9D&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [쿼리의최대값 D6](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXYmnKa6dYoDFAST&categoryId=AXYmnKa6dYoDFAST&categoryType=CODE&problemTitle=%EC%BF%BC%EB%A6%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [클러스터링 D6 ](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXXjDfE662IDFAST&categoryId=AXXjDfE662IDFAST&categoryType=CODE&problemTitle=%ED%81%B4%EB%9F%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [01채우기 D5 ](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXWXPp76-b8DFAST&categoryId=AXWXPp76-b8DFAST&categoryType=CODE&problemTitle=%EC%B1%84%EC%9A%B0%EA%B8%B0&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [트리 부수기 D6](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXVJpLGqK7wDFASe&categoryId=AXVJpLGqK7wDFASe&categoryType=CODE&problemTitle=%ED%8A%B8%EB%A6%AC&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [수만들기 D6 ](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXTC4piqD_IDFASe&categoryId=AXTC4piqD_IDFASe&categoryType=CODE&problemTitle=%EC%88%98+%EB%A7%8C%EB%93%A4%EA%B8%B0&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [조 신나  D5 ](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXSVnJc6EHIDFAQT&categoryId=AXSVnJc6EHIDFAQT&categoryType=CODE&problemTitle=%EC%8B%A0%EB%82%98&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [수나열누기  D6](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXRSfaWq-igDFAXS&categoryId=AXRSfaWq-igDFAXS&categoryType=CODE&problemTitle=%EC%88%98%EB%82%98%EC%97%B4%EB%88%84%EA%B8%B0&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [셋이놀기 D5 ](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXO8U7N6RBEDFAXS&categoryId=AXO8U7N6RBEDFAXS&categoryType=CODE&problemTitle=%EC%85%8B&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1)
+* [철인 N 종 경기](https://velog.io/@doontagi/%EA%B7%B8%EB%9E%98%ED%94%84-%EC%B5%9C%EB%8B%A8%EA%B1%B0%EB%A6%AC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-1-%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C-3-%EC%B2%A0%EC%9D%B8-N%EC%A2%85-%EA%B2%BD%EA%B8%B0-qcjyf2ngdm)
