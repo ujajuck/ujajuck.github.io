@@ -1,7 +1,4 @@
 ---
-published: false
----
----
 layout: post
 title: "Jekyll로 포스팅하기"
 subtitle: "make github blog with jekyll"
@@ -11,7 +8,7 @@ background: '/img/posts/01.png'
 
 Dijkstra
 
-,,,java
+```java
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -89,12 +86,11 @@ class Pro0312
 	}
 
 }
-,,,
-
+```
 
 Tree
 
-,,,java
+```java
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;

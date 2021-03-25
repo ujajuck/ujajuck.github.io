@@ -1,0 +1,169 @@
+I"Cw<p>Dijkstra</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.PriorityQueue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Pro0312</span>
+<span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">double</span><span class="o">[][]</span> <span class="n">map</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">double</span><span class="o">[][]</span> <span class="n">vis</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">vx</span><span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">,-</span><span class="mi">1</span><span class="o">};</span>
+	<span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">vy</span><span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">};</span>
+	<span class="kd">static</span> <span class="kt">double</span> <span class="n">max</span><span class="o">;</span>
+
+	<span class="kd">static</span> <span class="kd">class</span> <span class="nc">point</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="n">point</span><span class="o">&gt;{</span>
+		<span class="kt">int</span> <span class="n">dx</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">dy</span><span class="o">;</span>
+		<span class="kd">public</span> <span class="nf">point</span><span class="o">(</span><span class="kt">int</span> <span class="n">dx</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dy</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kd">super</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">dy</span> <span class="o">=</span> <span class="n">dy</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">point</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// TODO Auto-generated method stub</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">o</span><span class="o">.</span><span class="na">dy</span><span class="o">][</span><span class="n">o</span><span class="o">.</span><span class="na">dx</span><span class="o">]&lt;</span><span class="n">map</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">dy</span><span class="o">][</span><span class="k">this</span><span class="o">.</span><span class="na">dx</span><span class="o">])</span> <span class="o">{</span>
+				<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+			<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+				<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="cm">/*
+			 * vis 비교하면 안된다 무조건 map 이다
+			 * vis 는 초기 값이 0이기 때문에 방문 안한점이 있으면 우선0 순위가 되버려서 , vis로 비교하면 전체를 다 도는게 됨.
+			 * 최대한 쓸데없는데 방문을 덜하려고 pq를 쓰는 거니까 이런거 주의하자.  
+			 */</span>
+			<span class="c1">//return (int)(o.cost-this.cost);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[])</span> <span class="kd">throws</span> <span class="nc">Exception</span>
+	<span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="no">T</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">test_case</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">test_case</span> <span class="o">&lt;=</span> <span class="no">T</span><span class="o">;</span> <span class="n">test_case</span><span class="o">++)</span>
+		<span class="o">{</span>
+			<span class="n">y</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+			<span class="n">x</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+			<span class="n">map</span><span class="o">=</span><span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">];</span>
+			<span class="n">vis</span><span class="o">=</span><span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">];</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">y</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">x</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+					<span class="n">map</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="mf">0.9999</span><span class="o">+</span><span class="mf">0.000001</span><span class="o">*</span><span class="n">sc</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="n">point</span><span class="o">&gt;</span> <span class="n">pq</span><span class="o">=</span><span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+			<span class="n">vis</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]=</span><span class="n">map</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+			<span class="n">pq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">point</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">));</span>
+			<span class="k">while</span><span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+				<span class="n">point</span> <span class="n">now</span><span class="o">=</span><span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+				<span class="c1">//System.out.println(now.dy+" "+now.dx);</span>
+				<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">+</span><span class="n">vy</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="n">y</span><span class="o">||</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">+</span><span class="n">vy</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">+</span><span class="n">vx</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="n">x</span><span class="o">||</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">+</span><span class="n">vx</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">0</span><span class="o">)</span><span class="k">continue</span><span class="o">;</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">vis</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">+</span><span class="n">vy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">+</span><span class="n">vx</span><span class="o">[</span><span class="n">i</span><span class="o">]]&lt;</span><span class="n">vis</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">][</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">]*</span><span class="n">map</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">+</span><span class="n">vy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">+</span><span class="n">vx</span><span class="o">[</span><span class="n">i</span><span class="o">]])</span> <span class="o">{</span>
+						<span class="n">vis</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">+</span><span class="n">vy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">+</span><span class="n">vx</span><span class="o">[</span><span class="n">i</span><span class="o">]]=</span><span class="n">vis</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">][</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">]*</span><span class="n">map</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">+</span><span class="n">vy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">+</span><span class="n">vx</span><span class="o">[</span><span class="n">i</span><span class="o">]];</span>
+						<span class="n">pq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">point</span><span class="o">(</span><span class="n">now</span><span class="o">.</span><span class="na">dx</span><span class="o">+</span><span class="n">vx</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">now</span><span class="o">.</span><span class="na">dy</span><span class="o">+</span><span class="n">vy</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"#%d %.6f\n"</span><span class="o">,</span><span class="n">test_case</span><span class="o">,</span><span class="n">vis</span><span class="o">[</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="o">]);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Tree</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pro0319</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kd">class</span> <span class="nc">node</span><span class="o">{</span>
+		<span class="kt">int</span> <span class="n">parent</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">idx</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">sum</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">max</span><span class="o">=</span><span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">cost</span><span class="o">;</span>
+		<span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">children</span><span class="o">=</span><span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+		<span class="kd">public</span> <span class="nf">node</span><span class="o">(</span><span class="kt">int</span> <span class="n">parent</span><span class="o">,</span> <span class="kt">long</span> <span class="n">cost</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kd">super</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">cost</span> <span class="o">=</span> <span class="n">cost</span><span class="o">;</span>
+			<span class="c1">//this.max=cost;</span>
+			<span class="c1">//this.sum=cost;</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+	<span class="kd">static</span> <span class="n">node</span><span class="o">[]</span> <span class="n">list</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">long</span><span class="o">[]</span> <span class="n">ans</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FileNotFoundException</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">setIn</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"input.txt"</span><span class="o">));</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">t</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="c1">//System.out.println(t);</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">tc</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">tc</span><span class="o">&lt;=</span><span class="n">t</span><span class="o">;</span><span class="n">tc</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+			<span class="kt">int</span> <span class="n">r</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+			<span class="n">ans</span><span class="o">=</span><span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+			<span class="n">list</span><span class="o">=</span><span class="k">new</span> <span class="n">node</span><span class="o">[</span><span class="mi">500001</span><span class="o">];</span>
+			<span class="n">node</span> <span class="n">root</span><span class="o">=</span><span class="k">new</span> <span class="n">node</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="n">r</span><span class="o">);</span>
+			<span class="n">list</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="k">new</span> <span class="n">node</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+			<span class="n">list</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">root</span><span class="o">;</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="kt">int</span> <span class="n">p</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+				<span class="kt">long</span> <span class="n">c</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextLong</span><span class="o">();</span>
+				<span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="k">new</span> <span class="n">node</span><span class="o">(</span><span class="n">p</span><span class="o">,</span><span class="n">c</span><span class="o">);</span>
+				<span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">idx</span><span class="o">=</span><span class="n">i</span><span class="o">;</span>
+				<span class="n">node</span> <span class="n">parent</span><span class="o">=</span><span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+				<span class="n">list</span><span class="o">[</span><span class="n">p</span><span class="o">].</span><span class="na">children</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">p</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">c</span><span class="o">);</span>
+				<span class="k">while</span><span class="o">(</span><span class="n">parent</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">parent</span><span class="o">.</span><span class="na">sum</span><span class="o">+=</span><span class="n">c</span><span class="o">;</span>
+					<span class="n">parent</span><span class="o">.</span><span class="na">max</span><span class="o">=</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">max</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">sum</span><span class="o">);</span>
+
+					<span class="k">if</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">parent</span><span class="o">==-</span><span class="mi">1</span><span class="o">)</span><span class="k">break</span><span class="o">;</span>
+					<span class="n">parent</span><span class="o">=</span><span class="n">list</span><span class="o">[</span><span class="n">parent</span><span class="o">.</span><span class="na">parent</span><span class="o">];</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">root</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">size</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>			
+				<span class="k">if</span><span class="o">(</span><span class="n">list</span><span class="o">[</span><span class="n">root</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)].</span><span class="na">sum</span><span class="o">&gt;=</span><span class="n">ans</span><span class="o">[</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+					<span class="n">getmax</span><span class="o">(</span><span class="n">list</span><span class="o">[</span><span class="n">root</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)],</span><span class="n">list</span><span class="o">[</span><span class="n">root</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)].</span><span class="na">sum</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="c1">//getmax(root,0);</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">]!=</span><span class="kc">null</span><span class="o">)</span>
+					<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">" : "</span><span class="o">+</span><span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">cost</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">sum</span><span class="o">+</span><span class="s">" "</span><span class="o">+</span><span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">max</span><span class="o">);</span>
+			<span class="o">}</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="s">" "</span><span class="o">+</span><span class="n">ans</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">getmax</span><span class="o">(</span><span class="n">node</span> <span class="n">now</span><span class="o">,</span><span class="kt">long</span> <span class="n">now_max</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">now</span><span class="o">.</span><span class="na">max</span><span class="o">==</span><span class="n">now</span><span class="o">.</span><span class="na">sum</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">//System.out.println(now.idx);</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">ans</span><span class="o">[</span><span class="mi">0</span><span class="o">]&lt;</span><span class="n">now</span><span class="o">.</span><span class="na">sum</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">ans</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">ans</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+				<span class="n">ans</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="n">now</span><span class="o">.</span><span class="na">sum</span><span class="o">;</span>
+			<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">ans</span><span class="o">[</span><span class="mi">1</span><span class="o">]&lt;</span><span class="n">now</span><span class="o">.</span><span class="na">sum</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">ans</span><span class="o">[</span><span class="mi">1</span><span class="o">]=</span><span class="n">now</span><span class="o">.</span><span class="na">sum</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">now</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">size</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>			
+			<span class="k">if</span><span class="o">(</span><span class="n">list</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)].</span><span class="na">sum</span><span class="o">&gt;=</span><span class="n">now_max</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">getmax</span><span class="o">(</span><span class="n">list</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)],</span><span class="n">list</span><span class="o">[</span><span class="n">now</span><span class="o">.</span><span class="na">children</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)].</span><span class="na">sum</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
