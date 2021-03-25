@@ -1,5 +1,5 @@
 ---
-layout: Post
+layout: post
 title: Test Solution
 subtitle: testing
 date: '2021-03-24 00:01:13 -0400'
