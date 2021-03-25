@@ -177,3 +177,39 @@ public class Pro0319 {
 	}
 }
 ```
+
+# 양쪽 LIS
+
+[LIS 설명](https://hyun0k.tistory.com/entry/Baekjoon11054%EA%B0%80%EC%9E%A5-%EA%B8%B4-%EB%B0%94%EC%9D%B4%ED%86%A0%EB%8B%89-%EB%B6%80%EB%B6%84-%EC%88%98%EC%97%B4DP)
+
+```java
+import java.util.Scanner;
+
+public class Main11054 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] num=new int[n];
+		for(int i=0;i<n;i++)num[i]=sc.nextInt();
+		int[] dp1=new int[n];
+		int[] dp2=new int[n];
+		int idx1=0,idx2=0;
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<i;j++) {			
+				if(num[j]<num[i]) {
+					dp1[i]=Math.max(dp1[j]+1,dp1[i]);
+				}
+				if(num[n-1-j]<num[n-1-i]) {
+					dp2[n-1-i]=Math.max(dp2[n-1-j]+1,dp2[n-1-i]);
+				}
+			}
+		}
+		int max=0;
+		for(int i=0;i<n;i++) {
+			//System.out.println(dp1[i]+" "+dp2[i]);
+			if(max<dp1[i]+dp2[i])max=dp1[i]+dp2[i];
+		}
+		System.out.println(max+1);
+	}
+}
+```
