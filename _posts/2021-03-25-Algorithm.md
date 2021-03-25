@@ -7,9 +7,10 @@ background: /img/posts/01.png
 published: true
 ---
 
-Dijkstra
+# Dijkstra
 
 ```java
+
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -87,11 +88,14 @@ class Pro0312
 	}
 
 }
+
 ```
 
-Tree
+# Tree
+
 
 ```java
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -176,13 +180,16 @@ public class Pro0319 {
 		}
 	}
 }
+
 ```
 
 # 양쪽 LIS
 
 [LIS 설명](https://hyun0k.tistory.com/entry/Baekjoon11054%EA%B0%80%EC%9E%A5-%EA%B8%B4-%EB%B0%94%EC%9D%B4%ED%86%A0%EB%8B%89-%EB%B6%80%EB%B6%84-%EC%88%98%EC%97%B4DP)
+[문제 링크](https://www.acmicpc.net/problem/11054)
 
 ```java
+
 import java.util.Scanner;
 
 public class Main11054 {
@@ -212,4 +219,8 @@ public class Main11054 {
 		System.out.println(max+1);
 	}
 }
+
 ```
+
+
+
