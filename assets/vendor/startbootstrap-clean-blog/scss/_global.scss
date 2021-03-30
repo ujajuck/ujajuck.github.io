@@ -4,7 +4,7 @@ body {
   color: $gray-900;
   @include serif-font;
 } 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
 	body{
     	font-size: 10px;
     }
