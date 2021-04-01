@@ -12,8 +12,9 @@ published: true
 > 다익스트라
 > 출발점 반대로 하기
 
-	<details>
-  		<summary>code</summary>
+<details>
+  	<summary>code</summary>
+  
 ```java
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -85,7 +86,8 @@ public class Remind01 {
 	}
 }
 ```
-  	</details>
+  
+</details>
 
 
 ##  생산품
@@ -98,9 +100,10 @@ public class Remind01 {
 
 > 다익스트라
 
-	<details>
+<details>
   
-  		<summary>code</summary>
+  	<summary>code</summary>
+  
 ```java
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -210,7 +213,8 @@ public class Remind03 {
 }
   
 ```
-	</details>
+
+</details>
 
 ## 모니터링
 
