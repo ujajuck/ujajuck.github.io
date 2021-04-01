@@ -13,7 +13,7 @@ published: true
 > 출발점 반대로 하기
 
 <details>
-  	<summary>code</summary>
+<summary>code</summary>
   
 ```java
 import java.util.PriorityQueue;
@@ -101,8 +101,7 @@ public class Remind01 {
 > 다익스트라
 
 <details>
-  
-  	<summary>code</summary>
+<summary>code</summary>
   
 ```java
 import java.io.BufferedReader;
@@ -213,7 +212,6 @@ public class Remind03 {
 }
   
 ```
-
 </details>
 
 ## 모니터링
@@ -224,9 +222,8 @@ public class Remind03 {
 > server를 일반 node 배열로 카운딩소트하여 옮김 ---> k
 > 입력받은 서버에서 입력받은 시간을 이분 탐색으로 탐색(입력받은 시간보다 크지 않으면서 가장 가까운. 누적 이분탐색 사용가능할듯) ---> q log k
 
-	<details>
-  
-  		<summary>code</summary>
+<details>
+<summary>code</summary>
   
   ```java
 import java.io.FileInputStream;
@@ -291,7 +288,7 @@ public class Remind04 {
 
   
   ```
-	</details>
+</details>
 
 ## 사탕먹기
 
@@ -308,9 +305,9 @@ public class Remind04 {
 > 다익스트라
 
 
-	<details>
+<details>
+<summary>code</summary>
   
-  		<summary>code</summary>
 ```java
 import java.util.HashSet;
 import java.util.PriorityQueue;
@@ -390,7 +387,7 @@ class Remind06
 
 }
 ```
-	</details>
+</details>
 
 ## 프리랜서
 
