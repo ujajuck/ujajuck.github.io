@@ -1,4 +1,3 @@
-
 .my-calendar {
   width: 800px;
   margin: 30px;
@@ -84,8 +83,11 @@
 }
 .cal-table td.today {
   background: #ffd255;
-  border-radius: 50%;
+  border-radius: 10%;
   color: #fff;
+}
+.cal-table td.red {
+  color: red;
 }
 .cal-table td.day-active {
   background: #ff8585;
@@ -103,15 +105,35 @@
   background: #FFC107;
 }
 .month-table button{
-  border-color: white;
-    background: #ff8585;
+    border-color: white;
+    background: white;
     border-radius: 30px;
     font-size: 15px;
     width: 30px;
     height: 30px;
     padding-left: 3px;
+    color: #777777;
     font-family: 'Circular-Loom';
+    border: 0;
+    outline: 0;
+}
+.month-table button.m {
+    border-color: #cccccc;
+    background: #ff8585;
+    color : #333333;
+    font-weight: bold;
 }
 .month-table {
     margin-bottom: 30px;
+}
+
+@media only screen and(min-width:320px) {
+  .gcalendar_mobile{
+    display: none;
+  }
+}
+ @media only screen and(max-width:320px) {
+  .gcalendar{
+    display: none;
+  }
 }

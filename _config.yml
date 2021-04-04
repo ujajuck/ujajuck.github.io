@@ -26,3 +26,12 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+
+gcalendar:
+  key_file: AIzaSyBS77-VV0gfkHYJjUs59FT0CN1FZ2deSKs.json
+  calendars:
+    - id: YOUR-CALENDAR-ID      # eg. blahblahblah12345678912345@group.calendar.google.com
+      directory: events         # the directory in which to place geneated events
+      layout: gc_event          # the Jekyll layout template to use for events
+      date_format: "%d-%m-%Y"   # Uses Strftime formating directive (http://strftime.net/)
+      look_ahead: 365           # 1 year in days

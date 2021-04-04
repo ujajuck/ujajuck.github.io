@@ -1,0 +1,40 @@
+I"�<h1 id="캘린더">캘린더</h1>
+<hr />
+
+<p>.\assets\vendor\startbootstrap-clean-blog\scss\clean-blog.scss</p>
+
+<p>css 추가 경로</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "calendar.scss";
+
+</code></pre></div></div>
+<p><a href="https://im-developer.tistory.com/115">calendar</a> 의 코드를 긁었다.</p>
+
+<ul>
+  <li>추가한 기능은 월 테이블 만들기 + 다른 달로 한번에 이동
+    <blockquote>
+      <p>구현함</p>
+    </blockquote>
+  </li>
+  <li>홈버튼으로 오늘 날짜로 다시 한번에 이동
+    <blockquote>
+      <p>아직 구현안함</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>일요일,공휴일 빨간색\</p>
+  </li>
+  <li>
+    <p>좌측 일자 메모</p>
+  </li>
+  <li>메모가 존재하는 날은 마크</li>
+</ul>
+
+<p>UI 가 예뻐지지 않는다…..;;;;;;</p>
+
+<p><a href="https://newtodesign.com/css-calendar/">calendar css 참고</a></p>
+
+<p><a href="https://codepen.io/alexoliverwd/pen/bHhBI">css참고</a></p>
+
+<p><a href="https://velog.io/@raram2/CSS-%EB%A7%88%EC%A7%84-%EC%83%81%EC%87%84Margin-collapsing-%EC%9B%90%EB%A6%AC-%EC%99%84%EB%B2%BD-%EC%9D%B4%ED%95%B4">css 마진 겹침 현상이란?</a></p>
+:ET

@@ -1,0 +1,28 @@
+I"�<h1 id="시계">시계</h1>
+
+<p>다른 테마의 홈에서 긁었다 ㅎㅎ;;</p>
+
+<ul>
+  <li><a href="https://github.com/knaman2609/clean">Clean Theme</a></li>
+</ul>
+
+<hr />
+
+<h1 id="배경">배경</h1>
+
+<p>랜덤 배경을 사용하기</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://source.unsplash.com/category/nature/1600x900
+
+</code></pre></div></div>
+
+<p>아래 링크를 index.html 파일 background에 위 주소 넣기</p>
+
+<p>30초마다 갱신되며, 새로고침시 새로운 배경사진이 적용된다.</p>
+
+<ul>
+  <li><a href="https://opentutorials.org/course/2473/13868">랜덤배경 사용하기</a></li>
+</ul>
+
+<p>_masthead.scss 에서 높이도 150px 로 조정했다.</p>
+:ET

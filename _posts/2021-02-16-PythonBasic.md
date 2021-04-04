@@ -3,7 +3,7 @@ layout: post
 title: "Python 기초"
 subtitle: "Python 기초문법"
 date: 2021-02-16 00:09:00 -0400
-background: 'https://source.unsplash.com/category/nature/1600x900'
+background: 'http://source.unsplash.com/category/nature/1600x900'
 ---
 Python 기초
 ========================

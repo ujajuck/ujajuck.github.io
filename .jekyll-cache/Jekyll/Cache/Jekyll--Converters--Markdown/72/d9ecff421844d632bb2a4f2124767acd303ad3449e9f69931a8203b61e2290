@@ -1,0 +1,559 @@
+I"�<h2 id="변수형-별-범위">변수형 별 범위</h2>
+
+<p>정수형</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">데이터 타입</th>
+      <th style="text-align: left">메모리의 크기</th>
+      <th style="text-align: left">표현 가능 <strong>범위</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">short</td>
+      <td style="text-align: left">2 byte</td>
+      <td style="text-align: left">-32,768 ~ 32,767</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>int</strong></td>
+      <td style="text-align: left">4 byte</td>
+      <td style="text-align: left">-2,147,483,648~2,147,483,647</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">long</td>
+      <td style="text-align: left">8 byte</td>
+      <td style="text-align: left">-9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="시간-복잡도">시간 복잡도</h2>
+
+<h3 id="입력-크기별-자주-접하는-시간-복잡도">입력 크기별 자주 접하는 시간 복잡도</h3>
+
+<blockquote>
+  <p>대부분의 문제는 1초의 실행 시간 제한을 가지고 있다. 
+각 입력의 크기별로 예상할 수 있는 알고리즘의 시간복잡도다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>O (1) 상수시간 :</p>
+  </li>
+  <li>
+    <p>O (log n)로그시간</p>
+  </li>
+  <li>
+    <p>O( n^(1/2)) 제곱근시간</p>
+  </li>
+  <li>
+    <p>O(n) 선형시간 : n &lt;= 10^6</p>
+  </li>
+  <li>
+    <p><strong>O(n log n)</strong> : 효율적인 정렬 알고리즘의 시간 복잡도 : n &lt;= 10^6</p>
+  </li>
+  <li>
+    <p>O(n^2) 제곱시간 알고리즘 : n &lt;=5000</p>
+  </li>
+  <li>
+    <p>O(n^3) 세제곱 시간 알고리즘: n &lt;= 500</p>
+
+    <blockquote>
+      <p>여기까지 다항 시간 알고리즘</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>O(2^n)  : n&lt;=20</p>
+  </li>
+  <li>
+    <p>O(n!) : n &lt;=10</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="정렬">정렬</h2>
+
+<ul>
+  <li>
+    <p>버블정렬 : O(n^2)</p>
+  </li>
+  <li>
+    <p>병합정렬 : O(n log n)</p>
+
+    <ol>
+      <li>a=b 이면 아무것도 하지 않는다</li>
+      <li>가운데 위치 k=(a+b)/2를 계산한다.</li>
+      <li>a[0-k] ,a[k+1 - b] 를 각각 정렬한다</li>
+      <li>취합</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge_sort</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span><span class="kt">int</span> <span class="n">b</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
+  		<span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="o">)</span><span class="k">return</span><span class="o">;</span>
+  		<span class="kt">int</span> <span class="n">k</span><span class="o">=(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+  		<span class="n">merge_sort</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">k</span><span class="o">,</span><span class="n">arr</span><span class="o">);</span>
+  		<span class="n">merge_sort</span><span class="o">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">b</span><span class="o">,</span><span class="n">arr</span><span class="o">);</span>
+  		<span class="c1">//System.out.println("시작점 : "+a+ " 끝점 : " + b+ " 중간점 : "+k);</span>
+  		<span class="n">merge</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">,</span><span class="n">arr</span><span class="o">);</span>
+  		<span class="c1">//for(int i:arr)System.out.printf(i+" ");</span>
+  		<span class="c1">//System.out.println();</span>
+  		<span class="o">}</span>
+  	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+  		<span class="kt">int</span> <span class="n">k</span><span class="o">=(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+  		<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">a</span><span class="o">,</span><span class="n">j</span><span class="o">=</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">l</span><span class="o">=</span><span class="n">a</span><span class="o">;</span>
+  		<span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+  		<span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">k</span><span class="o">&amp;&amp;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+  			<span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">])</span><span class="n">temp</span><span class="o">[</span><span class="n">l</span><span class="o">++]=</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">++];</span>
+  			<span class="k">else</span> <span class="n">temp</span><span class="o">[</span><span class="n">l</span><span class="o">++]=</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">++];</span>
+  		<span class="o">}</span>
+  		<span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+  			<span class="n">temp</span><span class="o">[</span><span class="n">l</span><span class="o">++]=</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">++];</span>
+  		<span class="o">}</span>
+  		<span class="k">while</span><span class="o">(</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+  			<span class="n">temp</span><span class="o">[</span><span class="n">l</span><span class="o">++]=</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">++];</span>
+  		<span class="o">}</span>
+  		<span class="c1">//System.out.println("중간정렬 결과 : ");</span>
+  		<span class="c1">//for(int ii:temp)System.out.printf(ii+" ");</span>
+  		<span class="c1">//System.out.println();</span>
+  		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">m</span><span class="o">=</span><span class="n">a</span><span class="o">;</span><span class="n">m</span><span class="o">&lt;=</span><span class="n">b</span><span class="o">;</span><span class="n">m</span><span class="o">++)</span><span class="n">arr</span><span class="o">[</span><span class="n">m</span><span class="o">]=</span><span class="n">temp</span><span class="o">[</span><span class="n">m</span><span class="o">];</span>
+  	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>계수배열 (Counting Sort) : O(n)</p>
+
+    <ol>
+      <li>각 데이터의 개수를 count</li>
+      <li>누적합을 더해 1부터 최대값까지 누적합(이게 데이터의 새로운 주소가 된다)</li>
+      <li>새로운 배열에 누적합의 개수를 – 해준 후 저장</li>
+    </ol>
+
+    <p><a href="https://yabmoons.tistory.com/249">참고-얍문님의 설명</a></p>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">count_sort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">cnt</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">arr</span><span class="o">)</span><span class="n">cnt</span><span class="o">[</span><span class="n">i</span><span class="o">]++;</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span><span class="n">cnt</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="n">cnt</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">cnt</span><span class="o">[</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]]--;</span>
+			<span class="n">temp</span><span class="o">[</span><span class="n">cnt</span><span class="o">[</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]]]=</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"값:"</span><span class="o">+</span><span class="n">temp</span><span class="o">[</span><span class="n">cnt</span><span class="o">[</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]]]+</span><span class="s">" 주소:"</span><span class="o">+</span><span class="n">cnt</span><span class="o">[</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]]);</span>
+		<span class="o">}</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">temp</span><span class="o">)</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">" "</span><span class="o">);</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="java-에서의-comparetocomparable">Java 에서의 CompareTo,Comparable</h2>
+
+<p>Integer.compare(this.a,o.a)</p>
+
+<p>위 함수는 아래와 동일하다</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span><span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+   <span class="k">return</span> <span class="o">(</span><span class="n">x</span><span class="o">&lt;</span><span class="n">y</span><span class="o">)?-</span><span class="mi">1</span><span class="o">:((</span><span class="n">x</span><span class="o">==</span><span class="n">y</span><span class="o">)?</span><span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">)</span>
+   <span class="c1">//x가 y보다 작다 -1, 같다 0, 크다 </span>
+   <span class="c1">//즉 오름차순</span>
+ <span class="o">}</span>
+</code></pre></div></div>
+
+<p>x오름차순, x가 같을때 y를 오름 차순으로 정렬(순서 바꾸면 내림차순)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">node</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">x</span><span class="o">==</span><span class="n">o</span><span class="o">.</span><span class="na">x</span><span class="o">)</span> <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">y</span><span class="o">,</span><span class="n">o</span><span class="o">.</span><span class="na">y</span><span class="o">);</span>
+		<span class="k">else</span> <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">x</span><span class="o">,</span> <span class="n">o</span><span class="o">.</span><span class="na">x</span><span class="o">);</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+<p>return 되는 수가 작을 수록 배열에서 앞쪽</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">node</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="na">x</span><span class="o">&lt;</span><span class="k">this</span><span class="o">.</span><span class="na">x</span><span class="o">)</span><span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+		<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="na">x</span><span class="o">==</span><span class="k">this</span><span class="o">.</span><span class="na">x</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">o</span><span class="o">.</span><span class="na">y</span><span class="o">&lt;</span><span class="k">this</span><span class="o">.</span><span class="na">y</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="greedy-알고리즘">greedy 알고리즘</h2>
+
+<p><a href="https://www.acmicpc.net/problem/1931">회의실 배정</a></p>
+<blockquote>
+  <p>compare 을 쓸때 꼼꼼하게 모든 케이스를 계산하지 않으면 <strong>illegalArgument</strong> 생김 주의!</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.StringTokenizer</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main1931</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kd">class</span> <span class="nc">time</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="n">time</span><span class="o">&gt;{</span>
+		<span class="kt">long</span> <span class="n">start</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">end</span><span class="o">;</span>
+		<span class="kd">public</span> <span class="nf">time</span><span class="o">(</span><span class="kt">long</span> <span class="n">start</span><span class="o">,</span> <span class="kt">long</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kd">super</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">start</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">end</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">time</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">end</span><span class="o">==</span><span class="n">o</span><span class="o">.</span><span class="na">end</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">return</span> <span class="nc">Long</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">start</span><span class="o">,</span> <span class="n">o</span><span class="o">.</span><span class="na">start</span><span class="o">);</span>
+			<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+				<span class="k">return</span> <span class="nc">Long</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">end</span><span class="o">,</span> <span class="n">o</span><span class="o">.</span><span class="na">end</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="nc">BufferedReader</span> <span class="n">br</span><span class="o">=</span><span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+		<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">trim</span><span class="o">());</span>
+		<span class="n">time</span><span class="o">[]</span> <span class="n">timetable</span><span class="o">=</span><span class="k">new</span> <span class="n">time</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="nc">StringTokenizer</span> <span class="n">st</span><span class="o">=</span><span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+			<span class="kt">long</span> <span class="n">start</span><span class="o">=</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="kt">long</span> <span class="n">end</span><span class="o">=</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+			<span class="n">timetable</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="k">new</span> <span class="n">time</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">timetable</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">now</span><span class="o">=</span><span class="n">timetable</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">end</span><span class="o">;</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">now</span><span class="o">&lt;=</span><span class="n">timetable</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">start</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">now</span><span class="o">=</span><span class="n">timetable</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">end</span><span class="o">;</span>
+				<span class="n">cnt</span><span class="o">++;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cnt</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<blockquote>
+  <p>end 시간 오름차순 end 가 같을때 start 시간 오름차순으로 정리한다. (문제 조건에는 없지만, 시작시간과 끝 시간이 같을 수 있기 때문이다.)</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>반례 ) (3,3),(2,3),(3,3) 일때 최적은 3 이지만, 시작시간의 오름차순으로 정리되지 않으면 2가 나옴</p>
+  </blockquote>
+</blockquote>
+
+<p><a href="https://lmcoa15.tistory.com/39">예외케이스가 잘 정리 된 블로그</a></p>
+
+<p><a href="https://www.acmicpc.net/problem/19598">최소 회의실 개수</a></p>
+
+<hr />
+
+<h1 id="이분-탐색">이분 탐색</h1>
+
+<p><a href="https://www.acmicpc.net/problem/2805">나무자르기</a></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main2805</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">long</span> <span class="n">high</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">long</span> <span class="n">m</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">long</span><span class="o">[]</span> <span class="n">tree</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span><span class="o">=</span><span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="n">n</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="n">m</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextLong</span><span class="o">();</span>
+		<span class="n">tree</span><span class="o">=</span><span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+		<span class="kt">long</span> <span class="n">max</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">tree</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextLong</span><span class="o">();</span>
+			<span class="n">max</span><span class="o">=</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">tree</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+		<span class="o">}</span>
+		<span class="n">high</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		<span class="n">solv</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="n">max</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">high</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">solv</span><span class="o">(</span><span class="kt">long</span> <span class="n">start</span><span class="o">,</span> <span class="kt">long</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">//System.out.println(start+" "+end);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">start</span><span class="o">&gt;=</span><span class="n">end</span><span class="o">)</span><span class="k">return</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">mid</span><span class="o">=(</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+		<span class="kt">long</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">sum</span><span class="o">+=</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">tree</span><span class="o">[</span><span class="n">i</span><span class="o">]-</span><span class="n">mid</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+		<span class="o">}</span>
+		
+		<span class="k">if</span><span class="o">(</span><span class="n">sum</span><span class="o">&lt;</span><span class="n">m</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">solv</span><span class="o">(</span><span class="n">start</span><span class="o">,</span><span class="n">mid</span><span class="o">);</span>
+		<span class="o">}</span><span class="k">else</span> <span class="o">{</span>	
+			<span class="n">high</span><span class="o">=</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">high</span><span class="o">,</span> <span class="n">mid</span><span class="o">);</span><span class="c1">//적어도 m의 나무를 (글자를 잘 읽자)</span>
+			<span class="n">solv</span><span class="o">(</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">end</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><a href="https://www.acmicpc.net/problem/1920">수 찾기</a></p>
+
+<blockquote>
+  <p>띄엄 띄엄 보는 이분탐색 
+m/2씩 보다가 못찾으면 m/4씩 탐색 이걸 m/(2^n)==1 일때까지 반복</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">Pro</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main1920</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span><span class="o">=</span><span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">m</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">num</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">m</span><span class="o">];</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">num</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">search</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">search</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="c1">//System.out.printf(search[i]+" ");</span>
+			<span class="kt">int</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">add</span><span class="o">=</span><span class="n">m</span><span class="o">/</span><span class="mi">2</span><span class="o">;</span><span class="n">add</span><span class="o">&gt;=</span><span class="mi">1</span><span class="o">;</span><span class="n">add</span><span class="o">/=</span><span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+				<span class="c1">//System.out.printf("! ");</span>
+				<span class="k">while</span><span class="o">(</span><span class="n">idx</span><span class="o">+</span><span class="n">add</span><span class="o">&lt;</span><span class="n">m</span><span class="o">&amp;&amp;</span><span class="n">search</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="n">num</span><span class="o">[</span><span class="n">idx</span><span class="o">+</span><span class="n">add</span><span class="o">])</span> <span class="o">{</span>
+					<span class="n">idx</span><span class="o">+=</span><span class="n">add</span><span class="o">;</span>
+					<span class="c1">//System.out.printf("?? "+idx+" ");</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">[</span><span class="n">idx</span><span class="o">]==</span><span class="n">search</span><span class="o">[</span><span class="n">i</span><span class="o">])</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+			<span class="k">else</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><a href="https://www.acmicpc.net/problem/7453">합이 0 인 네 정수</a></p>
+
+<hr />
+
+<h1 id="다이나믹-프로그래밍dynamic-programming">다이나믹 프로그래밍(Dynamic Programming)</h1>
+
+<details>
+
+  <summary>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기본
+</code></pre></div>    </div>
+  </summary>
+
+  	<a href="https://www.acmicpc.net/problem/2156">포도주 시식</a>
+
+  <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main2156</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span><span class="o">=</span><span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">num</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">num</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">num</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="n">num</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]+</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">3</span><span class="o">],</span> <span class="n">num</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">]]);</span><span class="c1">//ooxo oxoo</span>
+			<span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]);</span><span class="c1">//xooo  </span>
+			<span class="n">max</span><span class="o">=</span><span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+                           
+</code></pre></div>  </div>
+
+</details>
+
+<details>
+
+  <summary>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>최장 증가 부분 수열(LIS)
+</code></pre></div>    </div>
+  </summary>
+  <p><a href="https://www.acmicpc.net/problem/11053">가장 긴 증가하는 부분 수열</a>
+<a href="https://www.acmicpc.net/problem/11055">가장 큰 증가 부분 수열</a>
+<a href="https://www.acmicpc.net/problem/9252">LCS2</a></p>
+</details>
+<details>
+
+  <summary>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>짐 싸기 문제 (knapsack)
+</code></pre></div>    </div>
+  </summary>
+  <p><a href="https://www.acmicpc.net/problem/12865">평범한 배낭</a></p>
+</details>
+<details>
+
+  <summary>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>타일 세기
+</code></pre></div>    </div>
+  </summary>
+  <p><a href="https://www.acmicpc.net/problem/2718">타일 채우기</a></p>
+</details>
+<details>
+
+  <summary>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기타
+</code></pre></div>    </div>
+  </summary>
+  <p><a href="https://www.acmicpc.net/problem/19621">회의실 배정2</a>
+<a href="https://www.acmicpc.net/problem/19622">회의실 배정3</a>
+<a href="https://www.acmicpc.net/problem/19623">회의실 배정4</a>
+<a href="https://www.acmicpc.net/problem/1915">가장 큰 정사각형</a></p>
+</details>
+
+<hr />
+
+<h2 id="세그먼트-트리">세그먼트 트리</h2>
+
+<p><a href="https://www.acmicpc.net/problem/7578">공장</a>
+<a href="https://steady-coding.tistory.com/137">참고</a></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main7578</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">long</span><span class="o">[]</span> <span class="n">tree</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Scanner</span> <span class="n">sc</span><span class="o">=</span><span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+		<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">b</span><span class="o">=</span><span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">b</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(),</span> <span class="n">i</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">tree</span><span class="o">=</span><span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">n</span><span class="o">*</span><span class="mi">4</span><span class="o">];</span>
+		
+		<span class="kt">long</span> <span class="n">ans</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">locB</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+			<span class="n">ans</span><span class="o">+=</span><span class="n">sum</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">n</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="n">locB</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">n</span><span class="o">);</span>
+			<span class="n">update</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">n</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="n">locB</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">,</span> <span class="kt">int</span> <span class="n">now</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">right</span><span class="o">&lt;</span><span class="n">start</span><span class="o">||</span><span class="n">end</span><span class="o">&lt;</span><span class="n">left</span><span class="o">)</span><span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">start</span><span class="o">&gt;=</span><span class="n">left</span><span class="o">&amp;&amp;</span><span class="n">right</span><span class="o">&gt;=</span><span class="n">end</span><span class="o">)</span><span class="k">return</span> <span class="n">tree</span><span class="o">[</span><span class="n">now</span><span class="o">];</span>
+		<span class="kt">int</span> <span class="n">mid</span><span class="o">=(</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+		<span class="k">return</span> <span class="nf">sum</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">now</span><span class="o">*</span><span class="mi">2</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">)+</span><span class="n">sum</span><span class="o">(</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="n">now</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">,</span> <span class="kt">int</span> <span class="n">now</span><span class="o">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">idx</span><span class="o">&lt;</span><span class="n">start</span><span class="o">||</span><span class="n">end</span><span class="o">&lt;</span><span class="n">idx</span><span class="o">)</span><span class="k">return</span><span class="o">;</span>
+		<span class="n">tree</span><span class="o">[</span><span class="n">now</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">start</span><span class="o">!=</span><span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">mid</span><span class="o">=(</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+			<span class="n">update</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">now</span><span class="o">*</span><span class="mi">2</span><span class="o">,</span> <span class="n">idx</span><span class="o">);</span>
+			<span class="n">update</span><span class="o">(</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">end</span><span class="o">,</span> <span class="n">now</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">idx</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="다익스트라">다익스트라</h2>
+
+<p><a href="https://www.acmicpc.net/problem/2665">미로만들기</a></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.PriorityQueue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main2665</span> <span class="o">{</span>
+	<span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">map</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">dp</span><span class="o">;</span>
+	<span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span><span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">};</span>
+	<span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span><span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">,-</span><span class="mi">1</span><span class="o">};</span>
+	<span class="kd">static</span> <span class="kd">class</span> <span class="nc">point</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="n">point</span><span class="o">&gt;{</span>
+		<span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+		<span class="kd">public</span> <span class="nf">point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kd">super</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">point</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">y</span><span class="o">][</span><span class="k">this</span><span class="o">.</span><span class="na">x</span><span class="o">],</span> <span class="n">dp</span><span class="o">[</span><span class="n">o</span><span class="o">.</span><span class="na">y</span><span class="o">][</span><span class="n">o</span><span class="o">.</span><span class="na">x</span><span class="o">]);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="kd">static</span> <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="n">point</span><span class="o">&gt;</span> <span class="n">pq</span><span class="o">=</span><span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="nc">BufferedReader</span> <span class="n">br</span><span class="o">=</span><span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+		<span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+		<span class="n">map</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">];</span>
+		<span class="n">dp</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">];</span>
+		<span class="nc">String</span><span class="o">[]</span> <span class="n">line</span><span class="o">;</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">line</span><span class="o">=</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">map</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">line</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span>
+				<span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="n">dp</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+		<span class="n">pq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">point</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+		<span class="k">while</span><span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+			<span class="n">point</span> <span class="n">p</span><span class="o">=</span><span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+			<span class="c1">//System.out.println(p.x+" "+p.y);</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="n">n</span><span class="o">||</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="n">n</span><span class="o">)</span><span class="k">continue</span><span class="o">;</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]]==</span><span class="mi">1</span><span class="o">&amp;&amp;</span><span class="n">dp</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]]!=</span><span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">)</span><span class="k">continue</span><span class="o">;</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]]==</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">dp</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]]&lt;=</span><span class="n">dp</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">]+</span><span class="mi">1</span><span class="o">)</span><span class="k">continue</span><span class="o">;</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]]==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">dp</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]]=</span><span class="n">dp</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">]+</span><span class="mi">1</span><span class="o">;</span>
+				<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+					<span class="n">dp</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">]]=</span><span class="n">dp</span><span class="o">[</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">][</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">];</span>
+				<span class="o">}</span>
+				<span class="n">pq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">point</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">+</span><span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">],</span><span class="n">p</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>```</p>
+:ET

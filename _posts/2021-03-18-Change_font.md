@@ -3,7 +3,7 @@ layout: post
 title: "GitBlog Custom"
 subtitle: "블로그 폰트 바꾸기"
 date: 2021-03-17 00:09:00 -0400
-background: 'https://source.unsplash.com/category/nature/1600x900'
+background: 'http://source.unsplash.com/category/nature/1600x900'
 ---
 블로그 폰트 바꾸기
 ========================
