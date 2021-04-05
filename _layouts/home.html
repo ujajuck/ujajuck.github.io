@@ -1,5 +1,6 @@
 ---
 layout: default
+published: true
 ---
 
 <!-- Page Header -->
@@ -36,50 +37,6 @@ layout: default
   <div class="clearboth"></div>
 
   <script>
-
-      /**
-       * @param {string} val
-       */
-      function createNewList (val) {
-        let id = new Date().getTime() + '';
-        let yy = init.activeDate.getFullYear();
-        let mm = init.activeDate.getMonth() + 1;
-        let dd = init.activeDate.getDate();
-        const $targetMon = $.btn-cal.selectMon.querySelector();
-        const $target = $calBody.querySelector(`.day[data-date="${dd}"]`);
-
-        let date = yy + '.' + init.addZero(mm) + '.' + init.addZero(dd);
-
-        let eventData = {};
-        eventData['date'] = date;
-        eventData['memo'] = val;
-        eventData['complete'] = false;
-        eventData['id'] = id;
-        init.event.push(eventData);
-        $todoList.appendChild(createLi(id, val, date));
-      }
-
-      loadYYMM(init.today);
-      loadDate(init.today.getDate(), init.today.getDay());
-
-      $btnNext.addEventListener('click', () => loadYYMM(init.nextMonth()));
-      $btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
-      $btnMonth.addEventListener('click',(e) => loadYYMM(init.selectMonth(Number(e.target.textContent))));
-
-      $calBody.addEventListener('click', (e) => {
-        if (e.target.classList.contains('day')) {
-          if (init.activeDTag) {
-            init.activeDTag.classList.remove('day-active');
-          }
-          let day = Number(e.target.textContent);
-          loadDate(day, e.target.cellIndex);
-          e.target.classList.add('day-active');
-          init.activeDTag = e.target;
-          init.activeDate.setDate(day);
-          reloadTodo();
-        }
-      });
-
 //clock 함수
     setInterval(function() {
       var seconds = new Date().getSeconds();
