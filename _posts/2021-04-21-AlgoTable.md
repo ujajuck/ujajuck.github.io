@@ -91,3 +91,33 @@ published: true
 | 1146  | [지그재그 서기](https://www.acmicpc.net/problem/1146)        | dp                         |      |
 | 15678 | [연세워터파크](https://www.acmicpc.net/problem/15678)        | dp, 세그먼트               |      |
 | 1994  | [등차수열](https://www.acmicpc.net/problem/1994)             | dp, 이분탐색               |      |
+
+<style>
+  /* 2way헤더와 라인포인트*/
+  table {
+      border-collapse: collapse;
+      text-align: left;
+      line-height: 1.5;
+  }
+  table thead th {
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      vertical-align: top;
+      color: #1b3453;
+      border-top: 2px solid #1b3453;
+      border-bottom: 2px solid #1b3453;
+  }
+  table tbody th {
+      padding: 10px 15px;
+      font-weight: bold;
+      vertical-align: top;
+      border-bottom: 1px solid #ccc;
+      background: #f3f6f7;
+  }
+  table td {
+      padding: 10px 15px;
+      vertical-align: top;
+      border-bottom: 1px solid #ccc;
+  }
+</style>
