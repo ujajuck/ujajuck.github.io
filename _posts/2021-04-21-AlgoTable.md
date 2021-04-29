@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 알고리즘 문제집 뽀개기
-subtitle: '☆공★부☆하★기☆시★러☆ㅎ★ㅠ☆'
+subtitle: ☆공★부☆하★기☆시★러☆ㅎ★ㅠ☆
 date: '2021-04-21 00:09:00 -0400'
 background: 'http://source.unsplash.com/category/nature/1600x900'
 published: true
@@ -31,7 +31,7 @@ published: true
 | 2751  | [수 정렬하기 2](https://www.acmicpc.net/problem/2751)        | 정렬                       |      |
 | 10090 | [Counting Inversions](https://www.acmicpc.net/problem/10090) | 세그먼트,분할정복          |      |
 | 18227 | [성대나라의 물탱크](https://www.acmicpc.net/problem/18227)   | 세그먼트                   |      |
-| 2336  | [굉장한 학생](https://www.acmicpc.net/problem/2336)          | 세그먼트                   |      |
+| 2336  | [굉장한 학생](https://www.acmicpc.net/problem/2336)          | 세그먼트                   |   굉장한문제....   |
 | 13537 | [수열과 쿼리 1](https://www.acmicpc.net/problem/13537)       | 세그먼트,머지소트          |      |
 | 7578  | [공장](https://www.acmicpc.net/problem/7578)                 | 세그먼트                   |      |
 | 1260  | [DFS와 BFS](https://www.acmicpc.net/problem/1260)            | 그래프                     |      |
