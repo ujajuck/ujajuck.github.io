@@ -1,0 +1,309 @@
+# 시스템
+
+## Unix
+
+### 권한설정 
+
+파일 666
+
+디렉터리 777
+
+### 계정정보 
+
+/etc/password
+
+/etc/shadow
+
+### 로그파일(책임 추적성)
+
+utmp: 현재 사용자
+
+wtmp: 로그인/아웃
+
+btmp: 패스워드 실패 정보
+
+lastlog: 마지막 로그인
+
+syslog: 모든 로그
+
+secure: 원격 접속 정보
+
+xferlog: ftp 사용정보
+
+Sulog: su  명령로그
+
+### Run Level(부팅단계)
+
+0: PROM
+
+1: 사용자 접근 불가, 관리단계
+
+2: 공유 안됨, 다중 사용자
+
+3: 공유 가능, 다중 사용자
+
+5: 프로세스 중지, 파일 시스템 unmount
+
+6: 재부팅
+
+### 유닉스 구조
+
+#### 파일 시스템 구조
+
+Boot Block: 부팅 프로그램
+
+Super Block: 파일 시스템 크기, 블록 수, 빈 블록
+
+Inode: 소유자, 파일크기, 데이터블록 주소, 생성시간
+
+Data Block: 사용자 데이터
+
+#### 파일 시스템 종류 
+
+Ext1
+
+Ext2: 
+
+Ext3: 저널링
+
+Ext4:
+
+### 특수 파일 
+
+Setuid: 4000, 실행 시 소유자 권한으로 실행
+
+Setgid: 2000, 실행 시 소유그룹 권한으로 실행
+
+Stickybit: 1000,/tmp, 임시 디렉터리
+
+
+
+## 운영체제
+
+### 운영체제 종류
+
+### CPU 스케줄링
+
+ #### 프로세스 상태전이
+
+![그림](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F9974B4465CC131A60E5AB5)
+
+https://rebas.kr/852
+
+
+
+#### CPU 스케줄링 기법
+
+선점: Round Robin, SRT, MLQ, MLFQ
+
+비선점: FCFS, SJF
+
+### 교착상태
+
+#### 발생조건 
+
+상호배제, 비선점, 점유와 대기, 환형대기
+
+#### 대응방법
+
+예방
+
+회피: 은행원 알고리즘
+
+발견: 자원할당 그래프
+
+회복: 희생자 선택
+
+### 디스크 스케줄링
+
+FCFS,SSTF,SCAN(엘리베이터),C-SCAN(밖->안)
+
+
+
+## 윈도우 보안
+
+### 윈도우 아키텍처
+
+Plug and play
+
+### 윈도우 파일 시스템
+
+FAT16: 최대 2GB
+
+FAT32: 2GB 이상
+
+NTFS: 암호화, 압축, 파티션, 파일레벨 보안 지원, convert 로 변환
+
+### 윈도우 인증
+
+Winlogon: 로그인 프로세스
+
+GINA: 계정정보와 암호화 된 패스워드를 LSA에 전달
+
+LSA: 계정검증,감사기록
+
+SAM: 계정정보가 저장된 해시값
+
+SRM: 사용자별 고유 SID 부여 및 권한 부여
+
+### 윈도우 로그(책임 추적성)
+
+응용 프로그램 로그 
+
+보안로그 
+
+시스템 로그
+
+# 네트워크 보안 
+
+## 공격기법
+
+### Sniffing
+
+promiscuous : MAC 과 관계없이 모두 수신 (ipconfig eth0 promisc)
+
+### IP Spofing
+
+IP 주소를 변조 DNS 캐시 테이블 변조
+
+### ARP SPoofing
+
+ARP 캐시 변조, MAC과 IP 주소 변조
+
+### TCP Syn Flooding
+
+Half Open 상태
+
+### Dr Dos
+
+반사공격, 발신자 ip 를 피해자 ip 로 변경하고 STN 패킷 전송
+
+### ICMP Flooding
+
+특정 Host 로 ICMP 응답이 가도록 조정 DDOS
+
+### Tear Drop
+
+Sequence Number 조작
+
+### Ping of Death
+
+커다란 ICMP 패킷이 분할되도록 하는 DDOS
+
+### Land Attack
+
+송신주소==수신주소
+
+### HTTP Get Flooding
+
+커다란 HTTP Get을 호출 DDOS
+
+### HTTP Read Dos
+
+TCP window 사이즈 조작
+
+### HTTP Header DOS
+
+HTTP Header 개행문자 조작
+
+### Session Hijacking
+
+정상적인 세션 가로채기(RST 신호 재연결 활용)
+
+## 네트워크 보안 솔루션
+
+### IPS
+
+침입탐지+대응
+
+### 방화벽
+
+스크리닝 라우터, 듀얼 홈, 스크린드 호스트, 스크린드 서브넷
+
+### IDS
+
+### VPN
+
+터널링을 통한 데이터 전송
+
+L2F(CISCO),PPTP(MS),L2TP(둘이 합친거),SSL,IPsec,MPLS
+
+### 허니팟
+
+제로데이공격 대응 
+
+### NAC 
+
+네트워크 접근 통제, 무결성 확인
+
+### ESM
+
+통합보안 관계시스템
+
+### SIEM
+
+빅데이터 기반의 통합보안관계시스템
+
+## 프로토콜
+
+### 네트워크 토폴로지
+
+계층형,버스형,스타형,링형,망형
+
+### OSI 7계층
+
+7 어플리케이션 계층(GateWay)
+
+6 프레젠테이션 계층
+
+5 세션 계층
+
+4 통신계층
+
+3 네트워크 계층(Router)
+
+2 데이터 링크 계층(Switch, Bridge)
+
+1 물리계층(Repeater)
+
+### TCP/IP
+
+#### TCP
+
+https://mindnet.tistory.com/entry/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-22%ED%8E%B8-TCP-3-WayHandshake-4-WayHandshake
+
+![3-way Handshaking](https://t1.daumcdn.net/cfile/tistory/225A964D52F1BB6917)
+
+![4-Way Handshaking](https://t1.daumcdn.net/cfile/tistory/2152353F52F1C02835)
+
+#### UDP
+
+비신뢰성 전송
+
+#### IP
+
+IPv4: 32bit 주소 ,anycast 미지원
+
+IPv6: 128bit 주소, broadcast 미지원
+
+#### ICMP
+
+#### ARP(ip->mac)/RARP(mac->ip)
+
+### 무선 네트워크
+
+#### 무선 LAN
+
+WEP: RC4 대칭키 암호화 기법, 40Bit 키(정적 키 사용으로 무작위 공격에 취약), 24 Bit 초기화 벡터
+
+WPA: 128Bit동적 암호화
+
+WPA2: AES 사용
+
+IEEE 802.1X
+
+#### RFID
+
+## 어플리케이션
+
+### 
